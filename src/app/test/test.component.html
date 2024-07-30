@@ -1,0 +1,81 @@
+<p>test works!</p>
+<h2 class="w-[300px] bg-sky-500">hello from test <i class="fa-solid fa-check fa-2x"></i></h2>
+<h1 class="text-2xl my-10 bg-emerald-600 text-center w-1/3 mx-auto py-6">الحمد لله</h1>
+
+
+<h3 class="uppercase text-center text-5xl text-red-500 mb-10">{{ userName}}</h3>
+<h3 class="uppercase text-center text-5xl text-red-500"> you Age is {{ userAge}}</h3>
+<img [src]="imgSrc" class="mx-auto my-10" [alt]="imgAlt" />
+<img src="./assets/images/mr_Pants.jpg" alt="gggggg" />
+
+<button class="border-collapse bg-red-500 m-16 text-white p-3 rounded-md block capitalize" disabled="{{check}}">don't
+  click me</button>
+<button class="border-collapse bg-green-600 m-16 text-white p-3 rounded-md block capitalize" [disabled]="check">click
+  me</button>
+<button class="order-collapse bg-green-600 m-16 text-white p-3 rounded-md block capitalize" (click)="sayHi()"
+  (mouseenter)="sayHi()"> test event</button>
+<div class="h-[250px] w-1/4 bg-blue-600 m-16 " (mouseenter)="sayHi()" (mouseleave)="sayHi()"></div>
+<input type="text" class="border border-gray-500 m-16 rounded-md" (keydown)="sayHi()" (keydown.k)="sayHello()">
+<input type="text" class="border border-gray-800 m-16 rounded-md" (keydown)="testEvent($event)">
+<input type="text" class="border border-gray-800 m-16 rounded-md" (click)="testMouseEvent($event)">
+
+<h2 [class.text-center]="checkAdmin()" class="my-10 text-5xl text-green-700">Hello Class Binding</h2>
+<h2 [class.text-center]="testClassBinding" class="my-10 text-5xl">Hello Class Binding</h2>
+
+<p [style.font-size]="'30px'" class="my-10">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi quia
+  possimus quibusdam natus qui asperiores optio
+  omnis saepe corporis nam!</p>
+<p [style.color]="color" class="my-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste illo, nam
+  dignissimos rerum molestias distinctio.
+  Tempore et pariatur mollitia esse.</p>
+<p [style.color]="testClassBinding == true ? 'green': 'red'" class="text-2xl my-10">Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit. Eveniet accusamus excepturi a repellat eaque doloremque non
+  nisi expedita laudantium rerum.</p>
+<p [class]="check == true? 'text-5xl text-green-700': 'text-2xl text-red-700'">Lorem ipsum, dolor sit amet consectetur
+  adipisicing elit. Repudiandae, voluptatem?</p>
+
+@for (friend of friends; track $index) {
+<h2 class="text-3xl my-5 bg-green-500 w-1/3 mx-auto text-center">{{friend}}</h2>
+}
+@for (element of elements; track $index) {
+<ul class="list-disc">
+  <li class="text-xl my-5 bg-sky-400">{{element}}</li>
+</ul>
+}
+
+<section>
+  <div class="container w-[85%] py-5">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
+      @for (product of listProducts; track $index) {
+      @if(product.onSale) {
+      <figure class="border-2 border-sky-200 p-2" [class.bg-green-600]="product.onSale">
+        <img [src]="product.imageSrc" class="w-full h-[300px]" alt="" />
+        <figcaption class="text-center py-5">
+          <h5> {{$index}}</h5>
+          <h4> {{$count}}</h4>
+          <h4> hello first {{$first}}</h4>
+          <h4> hello last {{$last}}</h4>
+          <h4> hello even {{$even}}</h4>
+          <h4> hello odd {{$odd}}</h4>
+          <h2 class="text-xl my-5">{{product.nameProduct}}</h2>
+          <h3 class="text-xl my-5">{{product.price}}</h3>
+          <span class="text-xl my-5">OnSale: {{product.onSale == true ? 'yes' : 'No'}}</span>
+        </figcaption>
+      </figure>
+      }
+      <!-- @else {
+  <h3 class="border-2 border-gray-200 text-3xl text-center">No data Found</h3>
+        } -->
+      }
+      @empty {
+      <h3 class="border-2 border-gray-200 text-3xl text-center">No data Found</h3>
+      }
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container w-[75%] py-10">
+    <input type="text" class="border-2 border-sky-400 my-5" [(ngModel)]="data" />
+    <p>{{data}}</p>
+  </div>
+</section>
